@@ -1,0 +1,17 @@
+
+dependencies {
+    compile libraries.guava
+    compile libraries.springBootAmqp
+    compile libraries.springBootDataRest
+}
+
+
+bootRepackage {
+    enabled = false // don't do this for this project, there's nothing runnable in here.
+}
+
+jar {
+    baseName = 'messaging-component'
+    excludes = ['**/logback.groovy']
+}
+

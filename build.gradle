@@ -1,0 +1,89 @@
+apply from: "./libraries.gradle"
+
+ext {
+    javaLanguageLevel = '1.7'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE")
+    }
+}
+
+allprojects { project ->
+    repositories {
+        mavenCentral()
+    }
+
+    // YOU SHALL NOT PASS!
+    configurations {
+        all*.exclude module: 'commons-logging'
+    }
+}
+
+subprojects { subProject ->
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'spring-boot'
+
+    targetCompatibility = rootProject.javaLanguageLevel
+    sourceCompatibility = rootProject.javaLanguageLevel
+
+    idea {
+        module {
+            inheritOutputDirs = false
+            downloadJavadoc = true
+            downloadSources = true
+            outputDir = file("$buildDir/classes/main/")
+        }
+    }
+
+    // common dependencies for all projects
+    dependencies {
+        // logging
+        compile libraries.logback
+        compile libraries.jsr305
+        compile libraries.springBootSecurity
+        compile libraries.springOAuth2
+
+        // testing
+        testCompile libraries.assertJ
+        testCompile libraries.mockito
+        testCompile libraries.junit
+        testCompile libraries.restAssured
+        testCompile libraries.springBootTest
+    }
+
+    sourceSets {
+        main.resources.srcDirs = ['src/main/resources']
+        test.java.srcDirs = ['src/test/java']
+    }
+
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+
+    javadoc {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(Test) {
+        testLogging {
+            exceptionFormat = 'full'
+        }
+    }
+}
+
+// task for setting up gradle wrapper
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+}

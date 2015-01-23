@@ -1,0 +1,8 @@
+// each submodule needs to be included here
+
+include ':component:messaging'
+include ':component:web'
+include ':component:ping-messages'
+
+include ':app:api'
+include ':app:server'

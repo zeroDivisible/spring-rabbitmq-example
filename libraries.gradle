@@ -1,0 +1,59 @@
+ext {
+    assertJVersion = '1.7.0'
+    ehcacheVersion = '2.9.0'
+    groovyVersion = '2.3.6'
+    guavaVersion = '18.0'
+    jsr305Version = '3.0.0'
+    junitVersion = '4.11'
+    logbackVersion = '1.1.2'
+    mockitoVersion = '1.10.8'
+    restAssuredVersion = '2.3.4'
+    slf4jVersion = '1.7.7'
+    springOAuth2Version = '2.0.4'
+
+    libraries = [
+            // misc dependencies
+            ehcache              : dependencies.create("net.sf.ehcache:ehcache:${ehcacheVersion}"),
+            groovy               : dependencies.create("org.codehaus.groovy:groovy-all:${groovyVersion}"),
+            guava                : dependencies.create("com.google.guava:guava:${guavaVersion}"),
+            jsr305               : dependencies.create("com.google.code.findbugs:jsr305:${jsr305Version}"),
+            log4jOverSlf4j       : dependencies.create("org.slf4j:log4j-over-slf4j:${slf4jVersion}"),
+            slf4jApi             : dependencies.create("org.slf4j:slf4j-api:${slf4jVersion}"),
+
+            // spring
+            springBootWeb        : [
+                    dependencies.create("org.springframework.boot:spring-boot-starter-web", {
+                        exclude module: "org.springframework.boot:spring-boot-starter-tomcat"
+                    }),
+                    dependencies.create("org.springframework.boot:spring-boot-starter-jetty"),
+                    dependencies.create("org.springframework.boot:spring-boot-starter-data-rest"),
+                    dependencies.create("javax.servlet:javax.servlet-api:3.1.0"), // required for jetty, not needed for tomcat
+            ],
+
+            springBootActuator   : dependencies.create("org.springframework.boot:spring-boot-starter-actuator"),
+            springBootAmqp       : dependencies.create("org.springframework.boot:spring-boot-starter-amqp"),
+            springBootDataRest   : dependencies.create("org.springframework.boot:spring-boot-starter-data-rest"),
+            springBootSecurity   : dependencies.create("org.springframework.boot:spring-boot-starter-security"),
+
+            springBootTest       : dependencies.create("org.springframework.boot:spring-boot-starter-test", {
+                exclude module: "org.mockito:mockito-all" // added separately, we don't need version bundled in here.
+            }),
+            springOAuth2         : dependencies.create("org.springframework.security.oauth:spring-security-oauth2:${springOAuth2Version}.RELEASE", {
+                exclude module: "jackson-mapper-asl"
+                exclude module: "jackson-core-asl"
+            }),
+            // logging
+            logback              : dependencies.create("ch.qos.logback:logback-classic:${logbackVersion}"),
+
+            // test
+            assertJ              : dependencies.create("org.assertj:assertj-core:${assertJVersion}"),
+            junit                : dependencies.create("junit:junit:${junitVersion}"),
+            mockito              : dependencies.create("org.mockito:mockito-core:${mockitoVersion}", {
+                exclude module: "org.hamcrest:hamcrest-core" //
+            }),
+            restAssured          : [
+                    dependencies.create("com.jayway.restassured:rest-assured:${restAssuredVersion}"),
+                    dependencies.create("com.jayway.restassured:json-schema-validator:${restAssuredVersion}"),
+            ],
+    ]
+}
