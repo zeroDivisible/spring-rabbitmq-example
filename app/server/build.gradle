@@ -1,0 +1,12 @@
+dependencies {
+    compile project(":component:ping-messages")
+}
+
+bootRepackage {
+    mainClassName = 'io.zerodi.ServerApplication'
+}
+
+jar {
+    baseName = 'app-server'
+    excludes = ['**/logback.groovy']
+}

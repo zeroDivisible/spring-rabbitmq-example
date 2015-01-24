@@ -1,0 +1,26 @@
+server:
+  port: 4567
+  context-path: /api
+
+spring:
+  rabbitmq:
+    host: 192.168.10.10
+    port: 5672
+    username: clerk_admin
+    password: 32Nassau
+    virtualHost: /clerk
+
+messaging:
+  # number of concurrent consumer threads which are getting message responses from the queue
+  # please be aware that having this set to more than 1 means that messages might be
+  # processed or acted on in a different order in which they were sent
+  concurrentConsumers: 1
+
+  # slower, but safer approach: if message is being sent to an exchange, but
+  # there's no destination to which it can be routed, it will be returned back.
+  mandatoryMessages: true
+
+
+management:
+  # health related endpoints (healthcheck, beans, will be served under this prefix)
+  contextPath: '/mgmt'
