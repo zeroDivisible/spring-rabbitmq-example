@@ -1,0 +1,13 @@
+dependencies {
+    compile project(":component:messaging")
+}
+
+bootRepackage {
+    enabled = false // don't do this for this project, there's nothing runnable in here.
+}
+
+jar {
+    baseName = 'ping-messages'
+    excludes = ['**/logback.groovy']
+}
+

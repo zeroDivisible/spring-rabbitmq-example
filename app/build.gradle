@@ -1,0 +1,3 @@
+bootRepackage {
+    enabled = false // don't do this for this project, there's nothing runnable in here.
+}
