@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import io.zerodi.messaging.amqp.SimpleMessageListenerContainerFactory;
-import io.zerodi.messaging.async.MessageHandlerFactory;
+import io.zerodi.messaging.amqp.MessageHandlerFactory;
 import io.zerodi.server.handler.PingHandler;
 
 @Configuration

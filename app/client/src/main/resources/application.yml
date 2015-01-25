@@ -1,6 +1,5 @@
 server:
   port: 4567
-  context-path: /api
 
 spring:
   rabbitmq:
@@ -19,8 +18,3 @@ messaging:
   # slower, but safer approach: if message is being sent to an exchange, but
   # there's no destination to which it can be routed, it will be returned back.
   mandatoryMessages: true
-
-
-management:
-  # health related endpoints (healthcheck, beans, will be served under this prefix)
-  contextPath: '/mgmt'

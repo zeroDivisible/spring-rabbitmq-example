@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.common.base.Preconditions;
-import io.zerodi.messaging.async.MessageHandler;
+import io.zerodi.messaging.amqp.MessageHandler;
 import io.zerodi.ping.PingMessage;
 import io.zerodi.server.Clock;
 
