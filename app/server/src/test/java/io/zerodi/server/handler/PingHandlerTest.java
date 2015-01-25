@@ -2,18 +2,19 @@ package io.zerodi.server.handler;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.MockitoAnnotations.initMocks;
 
 import java.util.Date;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Spy;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import io.zerodi.environment.service.CurrentClock;
 import io.zerodi.ping.PingMessage;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PingHandlerTest {
 
     @InjectMocks
@@ -22,14 +23,7 @@ public class PingHandlerTest {
     @Spy
     private CurrentClock currentClock;
 
-    private PingMessage  pingMessage;
-
-    @Before
-    public void setUp() throws Exception {
-        initMocks(this);
-
-        pingMessage = new PingMessage("test", new Date());
-    }
+    private PingMessage pingMessage = new PingMessage("test", new Date());
 
     @Test
     public void itShouldProduceResponseToPingMessage() throws Exception {
