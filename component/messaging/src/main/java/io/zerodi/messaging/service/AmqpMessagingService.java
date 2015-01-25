@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.base.Preconditions;
-import io.zerodi.messaging.async.ResponseListener;
+import io.zerodi.messaging.async.response.ResponseListener;
 import io.zerodi.messaging.core.UniqueId;
 import io.zerodi.messaging.core.UniqueIdFactory;
 
@@ -40,7 +40,7 @@ import io.zerodi.messaging.core.UniqueIdFactory;
             UniqueId correlationId = uniqueIdFactory.createUniqueId();
 
             Future<T> responseFuture = responseListener.awaitResponse(correlationId);
-            MessagePostProcessor postProcessor = postProcessorFactory.createPostProcessor(destination, messageId, correlationId);
+            MessagePostProcessor postProcessor = postProcessorFactory.createPostProcessor(messageId, correlationId);
 
             amqpTemplate.convertAndSend(destination.getExchangeName(), destination.getRoutingKey(), payload, postProcessor);
             return responseFuture;

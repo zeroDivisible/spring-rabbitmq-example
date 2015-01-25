@@ -1,15 +1,20 @@
-package io.zerodi.messaging.async;
+package io.zerodi.messaging.async.response;
 
+import org.springframework.amqp.core.Address;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import io.zerodi.messaging.amqp.SimpleMessageListenerContainerFactory;
+import io.zerodi.messaging.amqp.MessageHandlerFactory;
 import io.zerodi.messaging.configuration.MessagingConfiguration;
 import io.zerodi.messaging.core.UniqueId;
 import io.zerodi.messaging.core.UniqueIdFactory;
@@ -18,10 +23,19 @@ import io.zerodi.messaging.core.UniqueIdFactory;
 public class AsyncResponseConfiguration {
 
     @Autowired
+    private SimpleMessageListenerContainerFactory messageListenerContainerFactory;
+
+    @Autowired
     private MessagingConfiguration messagingConfiguration;
 
     @Autowired
     private UniqueIdFactory uniqueIdFactory;
+
+    @Autowired
+    private ResponseListener responseListener;
+
+    @Autowired
+    private MessageHandlerFactory messageHandlerFactory;
 
     @Qualifier("response-queue")
     @Bean
@@ -43,6 +57,22 @@ public class AsyncResponseConfiguration {
     @Bean
     protected Binding responseQueueBinding() {
         return BindingBuilder.bind(responseQueue()).to(responseExchange()).with(responseQueue().getName()).noargs();
+    }
+
+    @Qualifier("response-queue-address")
+    @Bean
+    public Address responseQueueAddress() {
+        return new Address(responseExchange().getName(), responseQueue().getName());
+    }
+
+    @Bean
+    public SimpleMessageListenerContainer responseListenerContainer() {
+        return messageListenerContainerFactory.createMessageListenerContainer(responseHandler(), responseQueue());
+    }
+
+    @Bean
+    public MessageListenerAdapter responseHandler() {
+        return messageHandlerFactory.newMessageListenerAdapter(responseListener);
     }
 
     private String formatResponseQueueName() {

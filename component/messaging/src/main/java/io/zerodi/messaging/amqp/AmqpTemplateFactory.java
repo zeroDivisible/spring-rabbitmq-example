@@ -20,7 +20,7 @@ import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Component;
 
-import io.zerodi.messaging.async.ResponseListener;
+import io.zerodi.messaging.async.response.ResponseListener;
 import io.zerodi.messaging.configuration.MessagingConfiguration;
 import io.zerodi.messaging.core.UniqueId;
 import io.zerodi.messaging.core.UniqueIdFactory;
