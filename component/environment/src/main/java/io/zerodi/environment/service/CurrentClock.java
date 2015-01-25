@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 
 @Service
-class CurrentClock implements Clock {
+public class CurrentClock implements Clock {
 
     @Override
     public Date getCurrentDate() {

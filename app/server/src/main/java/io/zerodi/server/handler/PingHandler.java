@@ -1,5 +1,7 @@
 package io.zerodi.server.handler;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,10 @@ public class PingHandler implements MessageHandler<PingMessage, PingMessage> {
         Preconditions.checkNotNull(message, "message cannot be null!");
         logger.info("handling ping message: {}", message);
 
-        return new PingMessage(createResponse(message), clock.getCurrentDate());
+        String response = createResponse(message);
+        Date currentDate = clock.getCurrentDate();
+
+        return new PingMessage(response, currentDate);
     }
 
     private String createResponse(final PingMessage message) {
