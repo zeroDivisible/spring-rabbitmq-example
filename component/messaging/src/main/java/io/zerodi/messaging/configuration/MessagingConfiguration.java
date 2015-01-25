@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import io.zerodi.messaging.amqp.RabbitMqConfiguration;
-import io.zerodi.messaging.async.AsyncResponseConfiguration;
+import io.zerodi.messaging.async.response.AsyncResponseConfiguration;
 
 @Configuration
 @ComponentScan(value = "io.zerodi.messaging")
@@ -40,7 +40,7 @@ public class MessagingConfiguration {
     /**
      * Prefix of the name of the queue, on which we want the system to listen on incoming requests.
      */
-    @Value("${responseQueuePrefix:response}")
+    @Value("${responseQueuePrefix:responses}")
     private String responseQueuePrefix;
 
     @Bean

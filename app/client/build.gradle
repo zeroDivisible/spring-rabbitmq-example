@@ -5,10 +5,10 @@ dependencies {
 }
 
 bootRepackage {
-    mainClassName = 'io.zerodi.server.ServerApplication'
+    mainClassName = 'io.zerodi.client.ClientApplication'
 }
 
 jar {
-    baseName = 'app-server'
+    baseName = 'app-client'
     excludes = ['**/logback.groovy']
 }

@@ -1,4 +1,4 @@
-package io.zerodi.messaging.async;
+package io.zerodi.messaging.amqp;
 
 /**
  * When dealing with AMQP, spring allows us to use an adapter (

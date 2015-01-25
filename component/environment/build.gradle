@@ -1,0 +1,13 @@
+dependencies {
+    compile libraries.guava
+}
+
+bootRepackage {
+    enabled = false // don't do this for this project, there's nothing runnable in here.
+}
+
+jar {
+    baseName = 'environment-component'
+    excludes = ['**/logback.groovy']
+}
+

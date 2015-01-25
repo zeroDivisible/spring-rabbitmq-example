@@ -1,4 +1,4 @@
-package io.zerodi.messaging.async;
+package io.zerodi.messaging.async.response;
 
 import java.util.concurrent.Future;
 

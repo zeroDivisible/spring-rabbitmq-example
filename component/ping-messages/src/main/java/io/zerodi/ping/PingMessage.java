@@ -13,7 +13,7 @@ public class PingMessage {
 
 
     @JsonCreator
-    public PingMessage(@JsonProperty final String payload, @JsonProperty final Date date) {
+    public PingMessage(@JsonProperty(value = "payload") final String payload, @JsonProperty(value = "date") final Date date) {
         Preconditions.checkNotNull(payload, "payload cannot be null!");
         Preconditions.checkNotNull(date, "date cannot be null!");
 
