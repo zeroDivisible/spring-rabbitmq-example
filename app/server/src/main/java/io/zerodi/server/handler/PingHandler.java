@@ -8,6 +8,9 @@ import io.zerodi.environment.service.Clock;
 import io.zerodi.messaging.amqp.MessageHandler;
 import io.zerodi.ping.PingMessage;
 
+/**
+ * Handles incoming ping messages, responding with pong.
+ */
 @Component
 public class PingHandler implements MessageHandler<PingMessage, PingMessage> {
 

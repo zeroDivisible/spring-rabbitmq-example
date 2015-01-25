@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 import com.google.common.base.Preconditions;
 import io.zerodi.messaging.configuration.MessagingConfiguration;
 
+/**
+ * Factory which can be used to obtain preconfigured instances of {@link org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer}
+ */
 @Component
 public class SimpleMessageListenerContainerFactory {
 
@@ -31,7 +34,8 @@ public class SimpleMessageListenerContainerFactory {
     }
 
     private void validateInput(final Object messageListener, final Queue[] queuesToListenOn) {
-        Preconditions.checkNotNull(queuesToListenOn, "queuesToListenOn cannot be null!");
         Preconditions.checkNotNull(messageListener, "messageListener cannot be null!");
+        Preconditions.checkNotNull(queuesToListenOn, "queuesToListenOn cannot be null!");
+        Preconditions.checkArgument(queuesToListenOn.length > 0, "queuesToListenOn.length > 0 is not fulfilled!");
     }
 }

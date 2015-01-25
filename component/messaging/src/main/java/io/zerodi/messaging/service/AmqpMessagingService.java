@@ -15,7 +15,8 @@ import io.zerodi.messaging.async.response.ResponseListener;
 import io.zerodi.messaging.core.UniqueId;
 import io.zerodi.messaging.core.UniqueIdFactory;
 
-@Service class AmqpMessagingService implements MessagingService {
+@Service
+class AmqpMessagingService implements MessagingService {
     private static final Logger logger = LoggerFactory.getLogger(AmqpMessagingService.class);
 
     @Autowired

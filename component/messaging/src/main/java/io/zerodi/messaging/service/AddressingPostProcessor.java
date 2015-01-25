@@ -11,6 +11,16 @@ import org.springframework.amqp.core.MessageProperties;
 import com.google.common.base.Preconditions;
 import io.zerodi.messaging.core.UniqueId;
 
+/**
+ * <p>
+ * {@link org.springframework.amqp.core.MessagePostProcessor} which is addressing outgoing messages with the details of a queue, to which
+ * responses need to be sent back
+ * </p>
+ * <p/>
+ * <p>
+ * It also sets message id & correlation id.
+ * </p>
+ */
 class AddressingPostProcessor implements MessagePostProcessor {
 
     private final Address  responseAddress;

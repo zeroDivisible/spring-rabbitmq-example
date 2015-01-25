@@ -25,6 +25,10 @@ import io.zerodi.messaging.configuration.MessagingConfiguration;
 import io.zerodi.messaging.core.UniqueId;
 import io.zerodi.messaging.core.UniqueIdFactory;
 
+/**
+ * {@link org.springframework.beans.factory.FactoryBean} which will be used to obtain preconfigured instances
+ * of {@link org.springframework.amqp.core.AmqpTemplate}
+ */
 @Primary
 @Component
 public class AmqpTemplateFactory implements FactoryBean<AmqpTemplate> {
