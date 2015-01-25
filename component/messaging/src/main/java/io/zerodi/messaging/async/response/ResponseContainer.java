@@ -32,7 +32,8 @@ public class ResponseContainer {
     /**
      * Notifies future (identified by id <code>uniqueId</code>, which is awaiting a response, with incoming response
      */
-    @SuppressWarnings("unchecked") <T> void notifyWithResponse(@Nonnull UniqueId uniqueId, @Nonnull T response) {
+    @SuppressWarnings("unchecked")
+    <T> void notifyWithResponse(@Nonnull UniqueId uniqueId, @Nonnull T response) {
         SettableFuture<?> future = pendingResponses.remove(uniqueId);
 
         if (future == null) {
