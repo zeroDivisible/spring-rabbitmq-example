@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.SettableFuture;
 import io.zerodi.messaging.core.UniqueId;
 
@@ -34,6 +35,8 @@ public class ResponseContainer {
      */
     @SuppressWarnings("unchecked")
     <T> void notifyWithResponse(@Nonnull UniqueId uniqueId, @Nonnull T response) {
+        Preconditions.checkNotNull(uniqueId, "uniqueId cannot be null!");
+
         SettableFuture<?> future = pendingResponses.remove(uniqueId);
 
         if (future == null) {
@@ -48,6 +51,9 @@ public class ResponseContainer {
     }
 
     void notifyWithError(@Nonnull UniqueId uniqueId, @Nonnull Throwable error) {
+        Preconditions.checkNotNull(uniqueId, "uniqueId cannot be null!");
+        Preconditions.checkNotNull(error, "error cannot be null!");
+
         SettableFuture<?> settableFuture = pendingResponses.remove(uniqueId);
 
         if (settableFuture == null) {

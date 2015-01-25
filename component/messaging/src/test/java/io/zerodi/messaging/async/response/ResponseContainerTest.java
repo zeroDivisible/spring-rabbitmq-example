@@ -12,15 +12,12 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import io.zerodi.messaging.core.UniqueId;
 import io.zerodi.messaging.core.UniqueIdFactory;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ResponseContainerTest {
-    private static final Logger logger = LoggerFactory.getLogger(ResponseContainerTest.class);
 
     @InjectMocks
     private ResponseContainer responseContainer;
@@ -33,6 +30,12 @@ public class ResponseContainerTest {
     @Before
     public void setUp() throws Exception {
         uniqueId = uniqueIdFactory.createUniqueId();
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void itShouldNotAcceptNullId() throws Exception {
+        // when
+        responseContainer.awaitResponse(null);
     }
 
     @Test
@@ -90,4 +93,24 @@ public class ResponseContainerTest {
 
         fail("an exception should have been thrown");
     }
+
+    @Test(expected = NullPointerException.class)
+    public void itShouldNotAcceptNullIdWhenPassingResponse() throws Exception {
+        // when
+        responseContainer.notifyWithResponse(null, new Object());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void itShouldNotAcceptNullIdWhenPassingException() throws Exception {
+        // when
+        responseContainer.notifyWithError(null, new RuntimeException());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void itShouldNotAcceptNullException() throws Exception {
+        // when
+        responseContainer.notifyWithError(uniqueIdFactory.createUniqueId(), null);
+    }
+
+
 }
