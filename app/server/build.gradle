@@ -3,7 +3,7 @@ dependencies {
 }
 
 bootRepackage {
-    mainClassName = 'io.zerodi.ServerApplication'
+    mainClassName = 'io.zerodi.server.ServerApplication'
 }
 
 jar {
