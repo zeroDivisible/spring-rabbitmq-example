@@ -7,7 +7,6 @@ bootRepackage {
 }
 
 jar {
-    baseName = 'ping-messages'
+    baseName = 'ping-messages-component'
     excludes = ['**/logback.groovy']
 }
-

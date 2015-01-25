@@ -1,0 +1,13 @@
+dependencies {
+    // TODO I've got no internet now so cannot get the dependency in here to run jetty
+//    compile libraries.springBootWeb
+}
+
+bootRepackage {
+    enabled = false // don't do this for this project, there's nothing runnable in here.
+}
+
+jar {
+    baseName = 'web-component'
+    excludes = ['**/logback.groovy']
+}
