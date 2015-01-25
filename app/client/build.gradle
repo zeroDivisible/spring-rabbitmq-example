@@ -1,4 +1,5 @@
 dependencies {
+    compile project(":component:environment")
     compile project(":component:ping-messages")
     compile project(":component:web")
 }

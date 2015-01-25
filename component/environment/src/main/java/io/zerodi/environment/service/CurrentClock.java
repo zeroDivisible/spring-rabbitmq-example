@@ -1,11 +1,11 @@
-package io.zerodi.server;
+package io.zerodi.environment.service;
 
 import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class CurrentClock implements Clock {
+class CurrentClock implements Clock {
 
     @Override
     public Date getCurrentDate() {

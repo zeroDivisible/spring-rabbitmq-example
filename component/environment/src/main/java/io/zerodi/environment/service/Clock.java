@@ -1,4 +1,4 @@
-package io.zerodi.server;
+package io.zerodi.environment.service;
 
 import java.util.Date;
 

@@ -1,8 +1,9 @@
 // each submodule needs to be included here
 
+include ':component:environment'
 include ':component:messaging'
-include ':component:web'
 include ':component:ping-messages'
+include ':component:web'
 
 include ':app:client'
 include ':app:server'
