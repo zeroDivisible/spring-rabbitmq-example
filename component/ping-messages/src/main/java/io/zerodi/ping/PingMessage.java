@@ -6,11 +6,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Preconditions;
 
+/**
+ * Simple POJO representing a ping message.
+ */
 public class PingMessage {
 
     private final String payload;
     private final Date   date;
-
 
     @JsonCreator
     public PingMessage(@JsonProperty(value = "payload") final String payload, @JsonProperty(value = "date") final Date date) {
@@ -27,5 +29,12 @@ public class PingMessage {
 
     public Date getDate() {
         return date;
+    }
+
+    @Override public String toString() {
+        return "PingMessage{" +
+                "payload='" + payload + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

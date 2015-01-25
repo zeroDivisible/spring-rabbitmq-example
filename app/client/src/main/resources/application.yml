@@ -9,6 +9,8 @@ spring:
     password: 32Nassau
     virtualHost: /clerk
 
+  groovy.template.check-template-location: false
+
 messaging:
   # number of concurrent consumer threads which are getting message responses from the queue
   # please be aware that having this set to more than 1 means that messages might be
