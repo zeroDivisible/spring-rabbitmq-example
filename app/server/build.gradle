@@ -1,5 +1,6 @@
 dependencies {
     compile project(":component:ping-messages")
+    compile project(":component:web")
 }
 
 bootRepackage {

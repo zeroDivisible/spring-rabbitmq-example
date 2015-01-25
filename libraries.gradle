@@ -51,7 +51,7 @@ ext {
             mockito           : dependencies.create("org.mockito:mockito-core:${mockitoVersion}", {
                 exclude module: "org.hamcrest:hamcrest-core"
             }),
-           
+
             restAssured       : [
                     dependencies.create("com.jayway.restassured:rest-assured:${restAssuredVersion}"),
                     dependencies.create("com.jayway.restassured:json-schema-validator:${restAssuredVersion}"),
