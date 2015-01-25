@@ -29,6 +29,10 @@ public class ResponseContainer {
         return future;
     }
 
+    /**
+     * Notifies future (identified by id <code>uniqueId</code>, which is awaiting a response, with incoming response
+     */
+    @SuppressWarnings("unchecked")
     <T> void notifyWithResponse(@Nonnull UniqueId uniqueId, @Nonnull T response) {
         SettableFuture<?> future = pendingResponses.remove(uniqueId);
 
@@ -40,7 +44,6 @@ public class ResponseContainer {
         logger.debug("notifying [ {} ] with [ {} ]", uniqueId, response);
 
         // TODO I couldn't come with a better way of doing this, unchecked cast was the only thing which came to mind.
-        // noinspection unchecked
         ((SettableFuture<Object>) future).set(response);
     }
 
