@@ -13,15 +13,15 @@ ext {
 
     libraries = [
             // misc dependencies
-            ehcache              : dependencies.create("net.sf.ehcache:ehcache:${ehcacheVersion}"),
-            groovy               : dependencies.create("org.codehaus.groovy:groovy-all:${groovyVersion}"),
-            guava                : dependencies.create("com.google.guava:guava:${guavaVersion}"),
-            jsr305               : dependencies.create("com.google.code.findbugs:jsr305:${jsr305Version}"),
-            log4jOverSlf4j       : dependencies.create("org.slf4j:log4j-over-slf4j:${slf4jVersion}"),
-            slf4jApi             : dependencies.create("org.slf4j:slf4j-api:${slf4jVersion}"),
+            ehcache           : dependencies.create("net.sf.ehcache:ehcache:${ehcacheVersion}"),
+            groovy            : dependencies.create("org.codehaus.groovy:groovy-all:${groovyVersion}"),
+            guava             : dependencies.create("com.google.guava:guava:${guavaVersion}"),
+            jsr305            : dependencies.create("com.google.code.findbugs:jsr305:${jsr305Version}"),
+            log4jOverSlf4j    : dependencies.create("org.slf4j:log4j-over-slf4j:${slf4jVersion}"),
+            slf4jApi          : dependencies.create("org.slf4j:slf4j-api:${slf4jVersion}"),
 
             // spring
-            springBootWeb        : [
+            springBootWeb     : [
                     dependencies.create("org.springframework.boot:spring-boot-starter-web", {
                         exclude module: "org.springframework.boot:spring-boot-starter-tomcat"
                     }),
@@ -30,28 +30,29 @@ ext {
                     dependencies.create("javax.servlet:javax.servlet-api:3.1.0"), // required for jetty, not needed for tomcat
             ],
 
-            springBootActuator   : dependencies.create("org.springframework.boot:spring-boot-starter-actuator"),
-            springBootAmqp       : dependencies.create("org.springframework.boot:spring-boot-starter-amqp"),
-            springBootDataRest   : dependencies.create("org.springframework.boot:spring-boot-starter-data-rest"),
-            springBootSecurity   : dependencies.create("org.springframework.boot:spring-boot-starter-security"),
+            springBootActuator: dependencies.create("org.springframework.boot:spring-boot-starter-actuator"),
+            springBootAmqp    : dependencies.create("org.springframework.boot:spring-boot-starter-amqp"),
+            springBootDataRest: dependencies.create("org.springframework.boot:spring-boot-starter-data-rest"),
+            springBootSecurity: dependencies.create("org.springframework.boot:spring-boot-starter-security"),
 
-            springBootTest       : dependencies.create("org.springframework.boot:spring-boot-starter-test", {
+            springBootTest    : dependencies.create("org.springframework.boot:spring-boot-starter-test", {
                 exclude module: "org.mockito:mockito-all" // added separately, we don't need version bundled in here.
             }),
-            springOAuth2         : dependencies.create("org.springframework.security.oauth:spring-security-oauth2:${springOAuth2Version}.RELEASE", {
+            springOAuth2      : dependencies.create("org.springframework.security.oauth:spring-security-oauth2:${springOAuth2Version}.RELEASE", {
                 exclude module: "jackson-mapper-asl"
                 exclude module: "jackson-core-asl"
             }),
             // logging
-            logback              : dependencies.create("ch.qos.logback:logback-classic:${logbackVersion}"),
+            logback           : dependencies.create("ch.qos.logback:logback-classic:${logbackVersion}"),
 
             // test
-            assertJ              : dependencies.create("org.assertj:assertj-core:${assertJVersion}"),
-            junit                : dependencies.create("junit:junit:${junitVersion}"),
-            mockito              : dependencies.create("org.mockito:mockito-core:${mockitoVersion}", {
-                exclude module: "org.hamcrest:hamcrest-core" //
+            assertJ           : dependencies.create("org.assertj:assertj-core:${assertJVersion}"),
+            junit             : dependencies.create("junit:junit:${junitVersion}"),
+            mockito           : dependencies.create("org.mockito:mockito-core:${mockitoVersion}", {
+                exclude module: "org.hamcrest:hamcrest-core"
             }),
-            restAssured          : [
+           
+            restAssured       : [
                     dependencies.create("com.jayway.restassured:rest-assured:${restAssuredVersion}"),
                     dependencies.create("com.jayway.restassured:json-schema-validator:${restAssuredVersion}"),
             ],

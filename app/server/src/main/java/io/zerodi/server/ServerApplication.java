@@ -14,7 +14,6 @@ import io.zerodi.server.configuration.ServerConfiguration;
 @Import({ServerConfiguration.class, PingConfiguration.class})
 public class ServerApplication extends SpringBootServletInitializer {
 
-
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
     }
