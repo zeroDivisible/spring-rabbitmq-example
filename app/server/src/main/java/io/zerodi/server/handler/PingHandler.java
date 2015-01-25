@@ -1,5 +1,7 @@
 package io.zerodi.server.handler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,7 @@ import io.zerodi.ping.PingMessage;
  */
 @Component
 public class PingHandler implements MessageHandler<PingMessage, PingMessage> {
+    private static final Logger logger = LoggerFactory.getLogger(PingHandler.class);
 
     @Autowired
     private Clock clock;
@@ -20,6 +23,8 @@ public class PingHandler implements MessageHandler<PingMessage, PingMessage> {
     @Override
     public PingMessage handleMessage(final PingMessage message) {
         Preconditions.checkNotNull(message, "message cannot be null!");
+        logger.info("handling ping message: {}", message);
+
         return new PingMessage(createResponse(message), clock.getCurrentDate());
     }
 

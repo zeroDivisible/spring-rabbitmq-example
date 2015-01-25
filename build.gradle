@@ -57,6 +57,8 @@ subprojects { subProject ->
         testCompile libraries.junit
         testCompile libraries.restAssured
         testCompile libraries.springBootTest
+
+        runtime libraries.groovy
     }
 
     sourceSets {

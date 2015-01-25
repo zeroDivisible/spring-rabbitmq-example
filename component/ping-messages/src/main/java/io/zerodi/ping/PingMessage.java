@@ -28,4 +28,11 @@ public class PingMessage {
     public Date getDate() {
         return date;
     }
+
+    @Override public String toString() {
+        return "PingMessage{" +
+                "payload='" + payload + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
