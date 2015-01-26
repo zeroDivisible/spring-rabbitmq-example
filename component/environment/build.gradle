@@ -1,5 +1,6 @@
 dependencies {
     compile libraries.guava
+    compile libraries.springBootCore
 }
 
 bootRepackage {

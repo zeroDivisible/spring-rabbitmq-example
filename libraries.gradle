@@ -1,6 +1,5 @@
 ext {
     assertJVersion = '1.7.0'
-    ehcacheVersion = '2.9.0'
     groovyVersion = '2.3.6'
     guavaVersion = '18.0'
     jsr305Version = '3.0.0'
@@ -9,16 +8,16 @@ ext {
     mockitoVersion = '1.10.8'
     restAssuredVersion = '2.3.4'
     slf4jVersion = '1.7.7'
-    springOAuth2Version = '2.0.4'
 
     libraries = [
             // misc dependencies
-            ehcache           : dependencies.create("net.sf.ehcache:ehcache:${ehcacheVersion}"),
             groovy            : dependencies.create("org.codehaus.groovy:groovy-all:${groovyVersion}"),
             guava             : dependencies.create("com.google.guava:guava:${guavaVersion}"),
             jsr305            : dependencies.create("com.google.code.findbugs:jsr305:${jsr305Version}"),
             log4jOverSlf4j    : dependencies.create("org.slf4j:log4j-over-slf4j:${slf4jVersion}"),
             slf4jApi          : dependencies.create("org.slf4j:slf4j-api:${slf4jVersion}"),
+
+            springBootCore : dependencies.create("org.springframework.boot:spring-boot"),
 
             // spring
             springBootWeb     : [
@@ -33,14 +32,9 @@ ext {
             springBootActuator: dependencies.create("org.springframework.boot:spring-boot-starter-actuator"),
             springBootAmqp    : dependencies.create("org.springframework.boot:spring-boot-starter-amqp"),
             springBootDataRest: dependencies.create("org.springframework.boot:spring-boot-starter-data-rest"),
-            springBootSecurity: dependencies.create("org.springframework.boot:spring-boot-starter-security"),
 
             springBootTest    : dependencies.create("org.springframework.boot:spring-boot-starter-test", {
                 exclude module: "org.mockito:mockito-all" // added separately, we don't need version bundled in here.
-            }),
-            springOAuth2      : dependencies.create("org.springframework.security.oauth:spring-security-oauth2:${springOAuth2Version}.RELEASE", {
-                exclude module: "jackson-mapper-asl"
-                exclude module: "jackson-core-asl"
             }),
             // logging
             logback           : dependencies.create("ch.qos.logback:logback-classic:${logbackVersion}"),

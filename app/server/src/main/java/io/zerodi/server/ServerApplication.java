@@ -12,7 +12,7 @@ import io.zerodi.server.configuration.ServerConfiguration;
 
 @Configuration
 @EnableAutoConfiguration
-@Import({ServerConfiguration.class, PingConfiguration.class, EnvironmentConfiguration.class})
+@Import({ServerConfiguration.class, PingConfiguration.class, EnvironmentConfiguration.class,})
 public class ServerApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

@@ -47,9 +47,8 @@ subprojects { subProject ->
     dependencies {
         // logging
         compile libraries.logback
+        compile libraries.slf4jApi
         compile libraries.jsr305
-        compile libraries.springBootSecurity
-        compile libraries.springOAuth2
 
         // testing
         testCompile libraries.assertJ

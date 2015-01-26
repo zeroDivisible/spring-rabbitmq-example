@@ -11,7 +11,7 @@ import io.zerodi.ping.configuration.PingConfiguration;
 
 @Configuration
 @EnableAutoConfiguration
-@Import({ClientConfiguration.class, PingConfiguration.class, EnvironmentConfiguration.class})
+@Import({ClientConfiguration.class, PingConfiguration.class, EnvironmentConfiguration.class,})
 public class ClientApplication {
 
     public static void main(String[] args) {
