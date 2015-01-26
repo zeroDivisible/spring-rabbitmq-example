@@ -9,6 +9,7 @@ appender("CONSOLE", ConsoleAppender) {
     }
 }
 
+logger("jndi", WARN, ["CONSOLE"], additivity = false)
 logger("org.aspectj", INFO, ["CONSOLE"], additivity = false)
 logger("org.eclipse", WARN, ["CONSOLE"], additivity = false)
 logger("org.hibernate", INFO, ["CONSOLE"], additivity = false)

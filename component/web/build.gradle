@@ -1,6 +1,5 @@
 dependencies {
-    // TODO I've got no internet now so cannot get the dependency in here to run jetty
-//    compile libraries.springBootWeb
+    compile libraries.springBootWeb
 }
 
 bootRepackage {
